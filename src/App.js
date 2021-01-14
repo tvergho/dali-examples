@@ -8,6 +8,7 @@ import {
   useParams,
 } from 'react-router-dom';
 import ColorGrid from './ColorGridFunctional';
+import Counter from './CounterFunctional';
 
 const App = () => {
   return (
@@ -26,6 +27,9 @@ const App = () => {
           <li>
             <Link to="/grid">Grid</Link>
           </li>
+          <li>
+            <Link to="/counter">Counter</Link>
+          </li>
         </ul>
 
         <Switch>
@@ -37,6 +41,9 @@ const App = () => {
           </Route>
           <Route path="/grid">
             <ColorGrid colors={['red', 'green', 'blue', 'yellow']} />
+          </Route>
+          <Route path="/counter">
+            <Counter />
           </Route>
           <Route path="/">
             <Home />

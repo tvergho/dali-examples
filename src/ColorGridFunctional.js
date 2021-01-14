@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ColorGridFunctional = ({ colors }) => {
+const ColorGrid = ({ colors }) => {
   return (
     <div className="color-grid">
       {colors && colors.map((color) => (<div style={{ backgroundColor: color }} className="grid-item" />))}
@@ -8,4 +8,4 @@ const ColorGridFunctional = ({ colors }) => {
   );
 };
 
-export default ColorGridFunctional;
+export default ColorGrid;

@@ -2,7 +2,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 
-class ColorGridClass extends Component {
+class ColorGrid extends Component {
   constructor(props) {
     super(props);
   }
@@ -18,4 +18,4 @@ class ColorGridClass extends Component {
   }
 }
 
-export default ColorGridClass;
+export default ColorGrid;

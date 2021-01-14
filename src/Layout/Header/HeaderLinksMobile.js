@@ -2,7 +2,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { DropdownArrow } from '../assets';
+import { NavLinkType } from '../types';
 import styles from './styles.module.scss';
 
 const defaultPath = '/';
@@ -57,6 +59,13 @@ const NavLink = ({
   );
 };
 
+NavLink.propTypes = {
+  display: PropTypes.string,
+  link: PropTypes.string,
+  onClick: PropTypes.func,
+  dropdown: PropTypes.arrayOf(NavLinkType),
+};
+
 const MobileBackdrop = ({ links, onClick }) => {
   return (
     <div className={styles['mobile-backdrop']}>
@@ -72,6 +81,11 @@ const MobileBackdrop = ({ links, onClick }) => {
       ))}
     </div>
   );
+};
+
+MobileBackdrop.propTypes = {
+  links: PropTypes.arrayOf(NavLinkType),
+  onClick: PropTypes.func,
 };
 
 /**
@@ -103,6 +117,10 @@ const HeaderLinksMobile = ({ links, visible, setVisible }) => {
       {visible && <MobileBackdrop links={links} visible={visible} onClick={toggle} />}
     </>
   );
+};
+
+HeaderLinksMobile.propTypes = {
+  links: PropTypes.arrayOf(NavLinkType).isRequired,
 };
 
 export default HeaderLinksMobile;

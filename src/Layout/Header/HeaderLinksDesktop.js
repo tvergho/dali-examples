@@ -1,7 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 import styles from './styles.module.scss';
+import { NavLinkType } from '../types';
 import { DropdownArrow } from '../assets';
 
 const ANIMATION_LENGTH = 300;
@@ -26,6 +28,12 @@ const NavLink = ({ link, display, dropdown }) => {
   );
 };
 
+NavLink.propTypes = {
+  dropdown: PropTypes.arrayOf(NavLinkType),
+  display: PropTypes.string,
+  link: PropTypes.string,
+};
+
 const Dropdown = ({ links, hovering }) => {
   return (
     <motion.div className={styles.dropdown} animate={{ opacity: hovering ? 1 : 0 }} transition={{ duration: ANIMATION_LENGTH / 1000 }}>
@@ -38,6 +46,11 @@ const Dropdown = ({ links, hovering }) => {
       </div>
     </motion.div>
   );
+};
+
+Dropdown.propTypes = {
+  links: PropTypes.arrayOf(NavLinkType),
+  hovering: PropTypes.bool,
 };
 
 const HeaderLinksDesktop = ({ links }) => {
@@ -53,4 +66,9 @@ const HeaderLinksDesktop = ({ links }) => {
     </>
   );
 };
+
+HeaderLinksDesktop.propTypes = {
+  links: PropTypes.arrayOf(NavLinkType).isRequired,
+};
+
 export default HeaderLinksDesktop;

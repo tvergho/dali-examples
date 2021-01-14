@@ -7,9 +7,9 @@ import {
   useRouteMatch,
   useParams,
 } from 'react-router-dom';
-import ColorGrid from './ColorGridFunctional';
-import Counter from './CounterFunctional';
-import CounterContainer from './CounterContainer';
+import ColorGrid from './ColorGrid/ColorGridFunctional';
+import Counter from './Counter/CounterFunctional';
+import CounterContainer from './CounterScroll/CounterContainer';
 
 const App = () => {
   return (

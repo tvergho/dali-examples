@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import useScrollPosition from './useScrollPosition';
+import useScrollPosition from '../useScrollPosition';
 
 const Counter = () => {
   const [count, setCount] = useState(0);

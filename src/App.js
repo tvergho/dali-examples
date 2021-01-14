@@ -10,6 +10,7 @@ import {
 import ColorGrid from './ColorGrid/ColorGridFunctional';
 import Counter from './Counter/CounterFunctional';
 import CounterContainer from './CounterScroll/CounterContainer';
+import Layout from './Layout';
 
 const App = () => {
   return (
@@ -51,6 +52,9 @@ const App = () => {
           </Route>
           <Route path="/counter-scroll">
             <CounterContainer />
+          </Route>
+          <Route path="/header">
+            <Layout header={[{ display: 'Home', link: '/' }, { display: 'Grid', link: '/grid' }]} />
           </Route>
           <Route path="/">
             <Home />

@@ -1,12 +1,13 @@
-import React from "react";
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
   useRouteMatch,
-  useParams
-} from "react-router-dom";
+  useParams,
+} from 'react-router-dom';
+import ColorGrid from './ColorGridFunctional';
 
 const App = () => {
   return (
@@ -22,6 +23,9 @@ const App = () => {
           <li>
             <Link to="/topics">Topics</Link>
           </li>
+          <li>
+            <Link to="/grid">Grid</Link>
+          </li>
         </ul>
 
         <Switch>
@@ -31,6 +35,9 @@ const App = () => {
           <Route path="/topics">
             <Topics />
           </Route>
+          <Route path="/grid">
+            <ColorGrid colors={['red', 'green', 'blue', 'yellow']} />
+          </Route>
           <Route path="/">
             <Home />
           </Route>
@@ -38,7 +45,7 @@ const App = () => {
       </div>
     </Router>
   );
-}
+};
 
 function Home() {
   return <h2>Home</h2>;
@@ -49,7 +56,7 @@ function About() {
 }
 
 function Topics() {
-  let match = useRouteMatch();
+  const match = useRouteMatch();
 
   return (
     <div>
@@ -78,7 +85,7 @@ function Topics() {
 }
 
 function Topic() {
-  let { topicId } = useParams();
+  const { topicId } = useParams();
   return <h3>Requested topic ID: {topicId}</h3>;
 }
 

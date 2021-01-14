@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 import ColorGrid from './ColorGridFunctional';
 import Counter from './CounterFunctional';
+import CounterContainer from './CounterContainer';
 
 const App = () => {
   return (
@@ -30,6 +31,9 @@ const App = () => {
           <li>
             <Link to="/counter">Counter</Link>
           </li>
+          <li>
+            <Link to="/counter-scroll">Counter Scroll</Link>
+          </li>
         </ul>
 
         <Switch>
@@ -44,6 +48,9 @@ const App = () => {
           </Route>
           <Route path="/counter">
             <Counter />
+          </Route>
+          <Route path="/counter-scroll">
+            <CounterContainer />
           </Route>
           <Route path="/">
             <Home />

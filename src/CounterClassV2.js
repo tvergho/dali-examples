@@ -1,14 +1,21 @@
 /* eslint-disable react/no-did-update-set-state */
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 
 class Counter extends Component {
   constructor(props) {
     super(props);
+    this.ref = createRef();
 
     this.state = {
       count: 0,
       isEven: true,
+      scrolled: false,
     };
+  }
+
+  componentDidMount() {
+    this.onScroll();
+    window.addEventListener('scroll', this.onScroll, { passive: true });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -17,14 +24,31 @@ class Counter extends Component {
     }
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+  }
+
+  onScroll = () => {
+    const pos = this.ref?.current?.offsetTop;
+    const scrollPos = window.scrollY + window.innerHeight;
+    const offset = 50;
+
+    if (pos + offset < scrollPos) {
+      this.setState({ scrolled: true });
+    } else {
+      this.setState({ scrolled: false });
+    }
+  };
+
   increment = () => { this.setState((prevState) => ({ count: prevState.count + 1 })); }
 
   decrement = () => { this.setState((prevState) => ({ count: prevState.count - 1 })); }
 
   render() {
-    const { count, isEven } = this.state;
+    const { count, isEven, scrolled } = this.state;
+
     return (
-      <div className="counter">
+      <div className={`counter hidden ${scrolled ? 'fade-in' : ''}`} ref={this.ref}>
         <button type="button" onClick={this.decrement} className="control">-</button>
         <div className="counter-text">
           <p>{`Count: ${count}`}</p>
